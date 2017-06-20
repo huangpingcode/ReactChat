@@ -1,5 +1,5 @@
 # jsChat
-> 一个用于学习JavaScript的项目
+> JavaScript开发的即时聊天demo, 仅仅是一个用于学习JavaScript的项目
 ## 其他分支说明如下
 ### 1. [platform-Android](https://github.com/hping-jser/jsChat/tree/platform-Android "platform-Android") 
 >1. android studio构建Android工程
