@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
+	<meta name="Generator" content="Sublime Text 3.0">
+	<!--[if lt IE 11]>
+	<script type="text/javascript" src="lib/es6-promise.auto.js"></script>
+	<![endif]-->
+	<script type="text/javascript">
+
+        if(!Object.assign){
+            Object.assign = function(traget, others){
+                var arg = arguments;
+                for(var i = 1, len = arg.length; i < len; i++){
+                    temp = arg[i]
+                    for(var key in temp){
+                        traget[key] = temp[key]
+                    }
+                }
+                return traget
+            }
+        }
+
+        if(typeof Promise === "undefined"){
+            var script = document.createElement("script")
+            script.setAttribute("type", "text/javascript")
+            script.setAttribute("src", "lib/es6-promise.auto.js")
+            document.head.appendChild(script)
+        }
+        // window.onload = function(){
+        // TODO 换个方式提醒用户升级浏览器
+        //   if(!"WebSocket" in window){
+        //     window.document.body.innerHTML = "<div style='font-size: 35px;color: #fff'>你的浏览器版本不支持本应用</div>"
+        //   }
+        // }
+        // window.onbeforeunload = function(){
+        //   return "dsafsd"
+        // }
+	</script>
+</head>
+<body>
+<div id="root"></div>
+</body>
+<!-- <script src="http://localhost:8080/webpack-dev-server.js"></script> -->
+</html>

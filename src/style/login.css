@@ -1,0 +1,143 @@
+@charset "utf-8";
+.login-bg{
+    padding-top: calc( 50vh - 250px );
+}
+.login-h1{
+    color: #fff;
+    font-size: 50px;
+    text-align: center;
+    text-shadow: 0px 0 1px #fff;
+}
+.login-h4{
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 2em;
+}
+.login-form{
+    position: relative;
+    width: 75%;
+    min-width: 280px;
+    max-width: 380px;
+    margin: 0 auto;
+    padding: 20px 25px 1px;
+    background: #0a0a0a;
+}
+.login-input-babel, .login-form-login, .login-form-footer{
+    width: 100%;
+    margin: 15px auto;
+}
+.login-input-babel{
+    display: block;
+    position: relative;
+}
+.login-input{
+    width: 100%;
+    color: #444;
+    font-size: 20px;
+    padding: 6px 30px 6px 6px;
+    background: #151515;
+    border: 2px solid #1a1a1a;
+    transition: all 0.8s;
+}
+.login-input:focus{
+    outline: none;
+    border-color: #3c738e;
+    /*box-shadow: 0px 0px 5px 1px #66afe9;*/
+    /*box-shadow: 0px 0px 5px 1px #54AFF9; */
+}
+
+.login-input-clear{
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    color: #444;
+    font-size: 22px;
+}
+.login-form-login{
+    display: block;
+    background: none;
+    border: none;
+    font-size: 20px;
+    text-align: center;
+    line-height: 40px;
+    background: #fea444;
+}
+.login-form-footer{
+    position: relative;
+}
+.login-forgot, .login-reg{
+    color: #666;
+    line-height: 35px;
+}
+.login-forgot{}
+.login-reg{
+    position: absolute;
+    right: 0;
+    color: #af7436;
+    font-size: 40px;
+}
+.login-logining{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+.login-logining-bg{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    opacity: 0.7;
+}
+.login-process{
+    position: relative;
+    margin-top: calc( 50vh - 5px );
+    font-size: 0;
+    line-height: 0;
+    text-align: center;
+    animation: loginProcess 1s infinite;
+}
+
+.login-process>i{
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: #901919;
+    margin: 0 8px;
+    border-radius: 50%;
+}
+.login-process>i:first-child{
+    background: #0ae281;
+}
+.login-process>i:last-child{
+    background: #fea444;
+}
+@keyframes loginProcess
+{
+    from {transform: rotateY(0deg);}
+    to {transform: rotateY(-360deg);}
+}
+.login-setting-form{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 20px 25px 1px;
+    background: #0a0a0a;
+}
+
+.login-setting-form .ion-ios-undo{
+    color: #aaa;
+    font-size: 25px;
+}
+.login-set-save{
+    position: absolute;
+    right: 17px;
+    top: 10px;
+    color: #fea444;
+    padding: 10px;
+}
+.fsdf{}
