@@ -1,45 +1,58 @@
 /*
  *  webpack 配置文件
-**/
+ **/
 const exec = require('child_process').exec
 const path = require('path');
 
 const webpack = require("webpack");
-const ExtractTextPlugin = require('extract-text-webpack-plugin');                         // 单独打包css
+const ExtractTextPlugin = require('extract-text-webpack-plugin'); // 单独打包css
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plugin')
 
 const extractCSS = new ExtractTextPlugin("index.css")
 const extractless = new ExtractTextPlugin("less.css")
 
-const isDev = (!process.env.NODE_ENV) || process.env.NODE_ENV.trim() !== "production"     // 是否开发环境
+const isDev = (!process.env.NODE_ENV) || process.env.NODE_ENV.trim() !== "production" // 是否开发环境
 // const isDev = false                                                                    // 或者直接定义
 const outputDir = isDev ? "build-dev" : "build"
 
 let webpackConfig = {
     entry: {
         index: './src/index',
-        common: ["./src/common/util.js", "./src/common/constant.js","./src/common/eventEmitter.js", 
-                 "./src/server/reactChatSdk.js"]
+        common: ["./src/common/util.js", "./src/common/constant.js", "./src/common/eventEmitter.js",
+            "./src/server/chatSdk.js"
+        ]
     },
     output: {
         path: path.resolve(__dirname, outputDir),
         filename: './js/[name].bundle.js',
     },
     module: {
-        rules: [
-            { test: /\.js$/, exclude: [/node_modules/], use: [{ loader: 'babel-loader'}],},
-            { test: /\.css$/,  use: extractCSS.extract({
+        rules: [{
+            test: /\.js$/,
+            exclude: [/node_modules/],
+            use: [{
+                loader: 'babel-loader'
+            }],
+        }, {
+            test: /\.css$/,
+            use: extractCSS.extract({
                 fallback: "style-loader",
-                use: ["css-loader?importLoaders=1",'postcss-loader']
-            })},
-            { test: /\.less$/, use: extractless.extract({
+                use: ["css-loader?importLoaders=1", 'postcss-loader']
+            })
+        }, {
+            test: /\.less$/,
+            use: extractless.extract({
                 fallback: "style-loader",
-                use: ["css-loader","less-loader",'postcss-loader']
-            })},
-            { test: /\.(jpg|png)$/, use: ['url-loader?limit=8192&name=img/[hash:8].[ext]']},
-            { test: /\.(eot|svg|ttf|woff)$/, use: ['file-loader?name=lib/font/[hash:8].[ext]']}
-        ]
+                use: ["css-loader", "less-loader", 'postcss-loader']
+            })
+        }, {
+            test: /\.(jpg|png)$/,
+            use: ['url-loader?limit=8192&name=img/[hash:8].[ext]']
+        }, {
+            test: /\.(eot|svg|ttf|woff)$/,
+            use: ['file-loader?name=lib/font/[hash:8].[ext]']
+        }]
     },
     plugins: [
         new webpack.DllReferencePlugin({
@@ -51,18 +64,18 @@ let webpackConfig = {
         new HtmlWebpackIncludeAssetsPlugin({
             assets: ['lib/lib.js', 'lib/css/ionicons.css'],
             hash: true,
-            append: false                                                                     // 先引入第三方库
+            append: false // 先引入第三方库
         }),
         new webpack.DefinePlugin({
             'process.env': {
                 NODE_ENV: isDev ? JSON.stringify("dev") : JSON.stringify("production")
-                // NODE_ENV: JSON.stringify(process.env.NODE_ENV)
+            // NODE_ENV: JSON.stringify(process.env.NODE_ENV)
             }
         })
     ]
 }
 
-if(isDev){                                                                                // 配置开发模式
+if (isDev) { // 配置开发模式
     // clearBuidlDev()
     Object.assign(webpackConfig, {
         devtool: 'source-map',
@@ -70,7 +83,8 @@ if(isDev){                                                                      
             contentBase: outputDir,
             hot: true,
             inline: true,
-            host: "127.0.0.1",
+            host: "0.0.0.0",
+            port: 8888,
             historyApiFallback: true,
             disableHostCheck: true
         }
@@ -86,8 +100,7 @@ if(isDev){                                                                      
         }),
         new webpack.HotModuleReplacementPlugin()
     )
-}
-else{                                                                                     // 配置生产模式
+} else { // 配置生产模式
     // Object.assign(webpackConfig, {
     // })
     webpackConfig.plugins.push(
@@ -95,14 +108,14 @@ else{                                                                           
             title: "jsChat",
             filename: "./index.html",
             template: "./src/index.html",
-            minify: {                                                                     // 压缩html代码
+            minify: { // 压缩html代码
                 removeComments: true,
                 collapseBooleanAttributes: true,
                 collapseWhitespace: true
             },
             hash: true
         }),
-        new webpack.optimize.UglifyJsPlugin({                                               // 压缩js, css代码
+        new webpack.optimize.UglifyJsPlugin({ // 压缩js, css代码
             compress: {
                 warnings: false
             }
@@ -110,26 +123,34 @@ else{                                                                           
     )
 }
 
-function clearBuidlDev(){
+function clearBuidlDev() {
     let fs = require("fs")
     let batPath = path.resolve(__dirname, outputDir)
     // existsSync
-    if(fs.existsSync(batPath)){
+    if (fs.existsSync(batPath)) {
         exec(batPath)
     }
 }
 
 // 选择nativeSDK路径
-function setNativeSDK(){
+function setNativeSDK() {
     let sdkPath = "";
-    switch(platform){
-        case "android": sdkPath = ""; break;
-        case "IOS": sdkPath = ""; break;
-        case "window": sdkPath = ""; break;
-        case "mac": sdkPath = ""; break;
-        default:
-            console.log("web");
-            break;
+    switch (platform) {
+    case "android":
+        sdkPath = "";
+        break;
+    case "IOS":
+        sdkPath = "";
+        break;
+    case "window":
+        sdkPath = "";
+        break;
+    case "mac":
+        sdkPath = "";
+        break;
+    default:
+        console.log("web");
+        break;
     }
     return sdkPath;
 }

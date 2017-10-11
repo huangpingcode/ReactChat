@@ -1,4 +1,6 @@
-
+/*
+ *  应用所有Action type
+**/
 import { MAIN_LOGOUT,
     LOGIN_UPDATE_STATE,
     LOGIN_UPDATE_ACCOUNT,

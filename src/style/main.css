@@ -1,63 +1,173 @@
 @charset "utf-8";
-html,body,div,p,a,span,ul,li,strong,i,img,input,label,button,h1,h2,h3,h4,h5,h6{
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	cursor: default;
+html, body, div, p, a, span, ul, li, strong, i, img, input, label, button, h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: default;
 }
-input:focus,button:focus{
-	outline: none;
+input:focus, button:focus {
+    outline: none;
 }
-input::-ms-clear { display: none; }
-::placeholder{
-	color: #666;
+input::-ms-clear {
+    display: none;
 }
-a{
-	text-decoration: none;
-	cursor: pointer;
+::placeholder {
+    color: #666;
 }
-button,.btn{
-	cursor: pointer;
+a {
+    text-decoration: none;
+    cursor: pointer;
 }
-i{
-	font-style: normal;
+button, .btn {
+    cursor: pointer;
 }
-html,body,#root,#root{
-	height: 100%;
+i {
+    font-style: normal;
 }
-body{
-	background: url(../img/bg.jpg) no-repeat center;
-	background-size: cover;
-	user-select:none
+html, body, #root {
+    height: 100%;
+}
+body {
+    background: url(../img/bg.jpg) no-repeat center;
+    background-size: cover;
+    user-select: none;
+}
+#root{
+    position: relative;
+    vertical-align:bottom;
+    overflow: hidden;
+}
+.one-px-bottom {
+    border-bottom: 1px solid #f1f3fb;
+}
+.welcome {
+    position: relative;
+    top: 50%;
+    color: #fff;
+    font-size: 100px;
+    font-weight: 900;
+    text-align: center;
+    margin-top: -90px;
+}
+.main {
+    position: absolute;
+    background: #fff;
+    width: 100%;
+    height: 100%;
+}
+.main-tab-bar {
+    background: #64dad0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+}
+.main-tab-pancel {
+    position: absolute;
+    top: 0;
+    bottom: 60px;
+    width: 100%;
+    background: #fff;
+    padding: 10px 0;
+    /*scrollbar-face-color: #fea444;*/
+    /* ie */
+    overflow: auto;
+}
+.main-content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+}
+.main-empty {
+    opacity: 0.1;
+    background: url(../img/logo-min.svg) no-repeat center center;
 }
 
-.main{
-	position: absolute;
-	background: #fff;
-	width: 100%;
-	height: 100%;
+
+
+/*::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+}*/
+
+::-webkit-scrollbar {
+    width: 10px;
+    background-color: #F5F5F5;
 }
 
+::-webkit-scrollbar-thumb {
+    background-color: #0c2136;
+    border-radius: 5px;
+}
+
+
+
+/*::-moz-scrollbar
+{
+    width: 10px;
+    background-color: #F5F5F5;
+}
+
+::-moz-scrollbar-thumb
+{
+    background-color: #fea444;
+    border-radius: 5px;
+}*/
 
 @media (min-width: 700px) {
-	body{
-		background-image: url(../img/bg-pc.jpg);
-	}
-	.main{
-		left: 50%;
-		top: 50%;
-		width: 800px;
-		height: 600px;
-		margin-left: -400px;
-		margin-top: -300px;
-	}
+    body {
+        background-image: url(../img/bg-pc.jpg);
+    }
+    .main {
+        left: 50%;
+        top: 50%;
+        /*width: 800px;*/
+        height: 100%;
+        max-width: 800px;
+        max-height: 600px;
+        transform: translate(-50%, -50%);
+    }
+    .main-tab-bar {
+        background: #0c2136;
+        position: absolute;
+        width: 60px;
+        height: 100%;
+    }
+    .main-tab-pancel {
+        left: 60px;
+        right: 0;
+        bottom: 0;
+        width: 250px;
+        background: #f1f3fb;
+    }
+    .main-content {
+        left: 310px;
+        right: 0;
+        width: auto;
+    }
 }
 
 @media (min-width: 1000px) {
-	.main{
-		width: 800px;
-		height: 600px;
-		margin-left: -400px;
-		margin-top: -300px;
-	}
+/*    .main {
+        width: 800px;
+        height: 600px;
+        margin-left: -400px;
+        margin-top: -300px;
+    }*/
+}
+
+
+@media only screen and (-webkit-min-device-pixel-ratio:2), only screen and (min-device-pixel-ratio:2) {
+    .one-px-bottom {
+        border: none;
+        background-image: -webkit-linear-gradient(90deg, #e1e3ec, #e1e3ec 50%, transparent 50%);
+        background-image: -moz-linear-gradient(90deg, #e1e3ec, #e1e3ec 50%, transparent 50%);
+        background-image: -o-linear-gradient(90deg, #e1e3ec, #e1e3ec 50%, transparent 50%);
+        background-image: linear-gradient(0, #e1e3ec, #e1e3ec 50%, transparent 50%);
+        background-size: 100% 1px;
+        background-repeat: no-repeat;
+        background-position: bottom;
+    }
 }

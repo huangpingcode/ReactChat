@@ -4,9 +4,26 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
 	<meta name="Generator" content="Sublime Text 3.0">
+    <meta http-equiv = "X-UA-Compatible" content = "IE=edge,chrome=1" />
 	<!--[if lt IE 11]>
 	<script type="text/javascript" src="lib/es6-promise.auto.js"></script>
 	<![endif]-->
+    <!--[if lte IE 9]>
+        <style type="text/css">
+            .ie{
+                display: block;
+                margin: 0 auto;
+                font-size: 46px;
+                background: red;
+                text-align: center;
+            }
+        </style>
+   <![endif]-->
+   <style>
+       .ie{
+        display: none;
+       }
+   </style>
 	<script type="text/javascript">
 
         if(!Object.assign){
@@ -30,9 +47,10 @@
         }
         // window.onload = function(){
         // TODO 换个方式提醒用户升级浏览器
-        //   if(!"WebSocket" in window){
-        //     window.document.body.innerHTML = "<div style='font-size: 35px;color: #fff'>你的浏览器版本不支持本应用</div>"
-        //   }
+          // if(!"WebSocket" in window){
+          if(!("__proto__" in {})){
+            window.document.write("<div style='font-size: 35px;color: #000;background: yellow;text-align: center;position:absolute; width: 100%'>您当前的浏览器版本太低，请<a href='http://rj.baidu.com/soft/detail/14744.html?ald'>升级</a>您的浏览器</div>");
+          }
         // }
         // window.onbeforeunload = function(){
         //   return "dsafsd"
@@ -40,6 +58,7 @@
 	</script>
 </head>
 <body>
+<div class="ie">您当前浏览器版本较低，请<a href="http://rj.baidu.com/soft/detail/14744.html?ald">升级</a>您的浏览器</div>
 <div id="root"></div>
 </body>
 <!-- <script src="http://localhost:8080/webpack-dev-server.js"></script> -->

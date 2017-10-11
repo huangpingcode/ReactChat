@@ -1,0 +1,40 @@
+@charset "utf-8";
+.recent-head {
+    display: block;
+    width: 45px;
+    text-align: center;
+    color: #d5e3f3;
+    font-size: 30px;
+    line-height: 45px;
+    background: #2d65a0;
+    /*border-radius: 50%;*/
+}
+.recent-item{
+        position: relative;
+    padding: 10px;
+}
+.recent-item.select,
+.recent-item:hover{
+    background: #ddd;
+}
+.recent-name{
+    position: absolute;
+    top: 20px;
+    left: 60px;
+    font-size: 18px;
+    line-height: 21px;
+}
+.recent-search{
+    display: block;
+    padding: 10px;
+    margin-top: 10px;
+}
+.recent-search-input{
+    font-size: 20px;
+}
+.recent-bottom-item{
+        color: #999;
+    text-align: center;
+    line-height: 35px;
+    background: #ccc;
+}

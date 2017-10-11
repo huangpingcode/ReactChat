@@ -1,11 +1,10 @@
-
 export let getConfig = () => {
-	// todo
+    // todo
 }
 
 export let loginApp = () => {
-	// todo
-	return new Promise((resolve, reject)=>{
-		setTimeout(()=>resolve(), 2000)
-	})
+    // todo
+    return new Promise((resolve, reject) => {
+        setTimeout(() => resolve(), 2000)
+    })
 }

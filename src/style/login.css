@@ -1,6 +1,6 @@
 @charset "utf-8";
 .login-bg{
-    padding-top: calc( 50vh - 250px );
+    padding-top: calc( 50vh - 220px );
 }
 .login-h1{
     color: #fff;
@@ -97,7 +97,8 @@
     font-size: 0;
     line-height: 0;
     text-align: center;
-    animation: loginProcess 1s infinite;
+    -webkit-animation: loginProcess 1s infinite;
+            animation: loginProcess 1s infinite;
 }
 
 .login-process>i{
@@ -114,10 +115,15 @@
 .login-process>i:last-child{
     background: #fea444;
 }
+@-webkit-keyframes loginProcess
+{
+    from {-webkit-transform: rotateY(0deg);transform: rotateY(0deg);}
+    to {-webkit-transform: rotateY(-360deg);transform: rotateY(-360deg);}
+}
 @keyframes loginProcess
 {
-    from {transform: rotateY(0deg);}
-    to {transform: rotateY(-360deg);}
+    from {-webkit-transform: rotateY(0deg);transform: rotateY(0deg);}
+    to {-webkit-transform: rotateY(-360deg);transform: rotateY(-360deg);}
 }
 .login-setting-form{
     position: absolute;

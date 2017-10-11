@@ -35,6 +35,6 @@ function randomInt(min,max){
 }
 
 document.oncontextmenu = function(e){
-    e.preventDefault()
-    return false
+    // e.preventDefault()
+    // return false
 }
